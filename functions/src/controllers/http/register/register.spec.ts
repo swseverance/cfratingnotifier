@@ -1,7 +1,7 @@
 import { Response } from "express";
 import { Request } from "firebase-functions/https";
 import { LoggerService } from "../../../api/logger/logger";
-import { createMockLogger } from "../../../api/logger/mockLogger";
+import { createMockLoggerService } from "../../../api/logger/mockLogger";
 import { MailgunService } from "../../../api/mailgun/mailgunService";
 import { createMockMailgunService } from "../../../api/mailgun/mockMailgunService";
 import { createMockUsersService } from "../../../api/users/mockUsersService";
@@ -15,7 +15,7 @@ describe("RegisterController", () => {
   const utilsService = createMockUtilsService();
   const mailgunService = createMockMailgunService();
   const usersService = createMockUsersService();
-  const loggerService = createMockLogger();
+  const loggerService = createMockLoggerService();
   const controller = new RegisterController(
     utilsService as unknown as UtilsService,
     mailgunService as unknown as MailgunService,

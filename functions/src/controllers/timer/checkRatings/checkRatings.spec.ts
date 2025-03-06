@@ -1,7 +1,7 @@
 import { CodeforcesService } from "../../../api/codeforces/codeforcesService";
 import { createMockCodeforces } from "../../../api/codeforces/mockCodeforcesService";
 import { LoggerService } from "../../../api/logger/logger";
-import { createMockLogger } from "../../../api/logger/mockLogger";
+import { createMockLoggerService } from "../../../api/logger/mockLogger";
 import { MessagesService } from "../../../api/messages/messagesService";
 import { createMockMessagesService } from "../../../api/messages/mockMessagesService";
 import { createMockUsersService } from "../../../api/users/mockUsersService";
@@ -15,7 +15,7 @@ import { CheckRatingsController } from "./checkRatings";
 describe("CheckRatingsController", () => {
   const codeforcesService = createMockCodeforces();
   const usersService = createMockUsersService();
-  const loggerService = createMockLogger();
+  const loggerService = createMockLoggerService();
   const utilsService = createMockUtilsService();
   const messagesService = createMockMessagesService();
   const controller = new CheckRatingsController(

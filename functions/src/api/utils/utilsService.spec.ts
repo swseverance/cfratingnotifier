@@ -3,14 +3,14 @@ import { testUtils } from "../../test";
 import { ConfigService } from "../config/configService";
 import { createMockConfigService } from "../config/mockConfigService";
 import { LoggerService } from "../logger/logger";
-import { createMockLogger } from "../logger/mockLogger";
+import { createMockLoggerService } from "../logger/mockLogger";
 import { UtilsService } from "./utilsService";
 
 describe("UtilsService", () => {
   test("toString()", () => {
     const service = new UtilsService(
       createMockConfigService() as ConfigService,
-      createMockLogger() as LoggerService
+      createMockLoggerService() as LoggerService
     );
 
     expect(service.toString(" a ")).toBe("a");
@@ -23,7 +23,7 @@ describe("UtilsService", () => {
     it("true", () => {
       const service = new UtilsService(
         createMockConfigService({ AUTH_TOKEN: "123" }) as ConfigService,
-        createMockLogger() as LoggerService
+        createMockLoggerService() as LoggerService
       );
       const actual = service.isAuthenticated({
         authorization: "Basic 123"
@@ -35,7 +35,7 @@ describe("UtilsService", () => {
     it("false", () => {
       const service = new UtilsService(
         createMockConfigService({ AUTH_TOKEN: "123" }) as ConfigService,
-        createMockLogger() as LoggerService
+        createMockLoggerService() as LoggerService
       );
       const actual = service.isAuthenticated({
         authorization: "Basic 456"
@@ -49,7 +49,7 @@ describe("UtilsService", () => {
     it("some invalid", () => {
       const service = new UtilsService(
         createMockConfigService() as ConfigService,
-        createMockLogger() as LoggerService
+        createMockLoggerService() as LoggerService
       );
       const bobUser = testUtils.createUser({
         id: "123",
@@ -77,7 +77,7 @@ describe("UtilsService", () => {
     it("no invalid", () => {
       const service = new UtilsService(
         createMockConfigService() as ConfigService,
-        createMockLogger() as LoggerService
+        createMockLoggerService() as LoggerService
       );
       const bobUser = testUtils.createUser({
         id: "123",
@@ -107,7 +107,7 @@ describe("UtilsService", () => {
     it("some changes", () => {
       const service = new UtilsService(
         createMockConfigService() as ConfigService,
-        createMockLogger() as LoggerService
+        createMockLoggerService() as LoggerService
       );
       const bobUser = testUtils.createUser({
         id: "123",
@@ -160,7 +160,7 @@ describe("UtilsService", () => {
     it("no changes", () => {
       const service = new UtilsService(
         createMockConfigService() as ConfigService,
-        createMockLogger() as LoggerService
+        createMockLoggerService() as LoggerService
       );
       const bobUser = testUtils.createUser({
         id: "123",
@@ -212,7 +212,7 @@ describe("UtilsService", () => {
     it("first rating for user", () => {
       const service = new UtilsService(
         createMockConfigService() as ConfigService,
-        createMockLogger() as LoggerService
+        createMockLoggerService() as LoggerService
       );
       const bobUser = {
         id: "123",

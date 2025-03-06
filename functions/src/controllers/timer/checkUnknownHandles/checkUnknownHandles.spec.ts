@@ -1,7 +1,7 @@
 import { CodeforcesService } from "../../../api/codeforces/codeforcesService";
 import { createMockCodeforces } from "../../../api/codeforces/mockCodeforcesService";
 import { LoggerService } from "../../../api/logger/logger";
-import { createMockLogger } from "../../../api/logger/mockLogger";
+import { createMockLoggerService } from "../../../api/logger/mockLogger";
 import { createMockUsersService } from "../../../api/users/mockUsersService";
 import { UsersService } from "../../../api/users/usersService";
 import { createMockUtilsService } from "../../../api/utils/mockUtilsService";
@@ -13,7 +13,7 @@ import { CheckUnknownHandlesController } from "./checkUnknownHandles";
 describe("CheckUnknownHandlesController", () => {
   const usersService = createMockUsersService();
   const codeforcesService = createMockCodeforces();
-  const loggerService = createMockLogger();
+  const loggerService = createMockLoggerService();
   const utilsService = createMockUtilsService();
   const controller = new CheckUnknownHandlesController(
     usersService as unknown as UsersService,

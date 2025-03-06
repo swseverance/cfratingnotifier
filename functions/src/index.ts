@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase-admin/app";
 import { onRequest } from "firebase-functions/https";
 import { onSchedule } from "firebase-functions/scheduler";
+import { AnalyticsController } from "./controllers/http/analytics/analytics";
 import { DebugController } from "./controllers/http/debug/debug";
 import { RegisterController } from "./controllers/http/register/register";
 import { CheckRatingsController } from "./controllers/timer/checkRatings/checkRatings";
@@ -29,6 +30,8 @@ exports.register = onRequest(ON_REQUEST_CONFIG, (req, res) =>
 exports.debug = onRequest(ON_REQUEST_CONFIG, (req, res) =>
   DebugController.getInstance().onRequest(req, res)
 );
+
+exports.analytics = onRequest((req, res) => AnalyticsController.getInstance().onRequest(req, res));
 
 exports.checkUnknownHandles = onSchedule(ON_SCHEDULE_CONFIG, () =>
   CheckUnknownHandlesController.getInstance().onSchedule()

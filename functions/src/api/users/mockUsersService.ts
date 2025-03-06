@@ -9,5 +9,6 @@ export const createMockUsersService = () => ({
   markAsInvalid: jest.fn<Promise<void>, [User[]]>(),
   markAsValid: jest.fn<Promise<void>, [User[]]>(),
   updateUsersData: jest.fn<Promise<void>, [User[]]>(),
-  deleteUsers: jest.fn<Promise<void>, [string[]]>()
+  deleteUsers: jest.fn<Promise<void>, [string[]]>(),
+  getUsersCount: jest.fn<Promise<number>, []>()
 });

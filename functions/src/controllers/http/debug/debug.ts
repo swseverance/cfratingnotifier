@@ -47,7 +47,7 @@ export class DebugController {
     if (handle) {
       try {
         res.json({
-          user: await this.usersService.fetchUsersByHandle(handle),
+          users: await this.usersService.fetchUsersByHandle(handle),
           messages: await this.messagesService.fetchMessagesByHandle(handle)
         });
       } catch (error) {

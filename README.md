@@ -25,6 +25,10 @@ Q: Can I subscribe to receive notifications for multiple handles?
 
 A: No. There are no plans for this feature.
 
+Q: I subscribed with the wrong handle, what do I do?
+
+A: Just send another email using the correct handle.
+
 Q: Is this affiliated with Codeforces?
 
 A: No.

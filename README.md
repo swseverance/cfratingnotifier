@@ -2,9 +2,9 @@
 
 ## Receive an email notification when your Codeforces rating changes 🚀
 
-![Active Users Badge](https://img.shields.io/endpoint?labelColor=6495ED&color=6495ED&cacheSeconds=3600&url=https://us-central1-cfmailerdev.cloudfunctions.net/analytics?type=users)
+![Active Users Badge](https://img.shields.io/endpoint?labelColor=6495ED&color=6495ED&cacheSeconds=3600&url=https://us-central1-cfmailer.cloudfunctions.net/analytics?type=users)
 
-![Rating Changes Sent Badge](https://img.shields.io/endpoint?labelColor=90EE90&color=90EE90&cacheSeconds=3600&url=https://us-central1-cfmailerdev.cloudfunctions.net/analytics?type=messages)
+![Rating Changes Sent Badge](https://img.shields.io/endpoint?labelColor=90EE90&color=90EE90&cacheSeconds=3600&url=https://us-central1-cfmailer.cloudfunctions.net/analytics?type=messages)
 
 Q: How do I register?
 

@@ -1,5 +1,5 @@
 import { LoggerService } from "../../../api/logger/logger";
-import { createMockLogger } from "../../../api/logger/mockLogger";
+import { createMockLoggerService } from "../../../api/logger/mockLogger";
 import { MessagesService } from "../../../api/messages/messagesService";
 import { createMockMessagesService } from "../../../api/messages/mockMessagesService";
 import { createMockUsersService } from "../../../api/users/mockUsersService";
@@ -10,7 +10,7 @@ import { ProcessInvalidHandlesController } from "./processInvalidHandles";
 
 describe("ProcessInvalidHandlesController", () => {
   const messagesService = createMockMessagesService();
-  const loggerService = createMockLogger();
+  const loggerService = createMockLoggerService();
   const usersService = createMockUsersService();
   const controller = new ProcessInvalidHandlesController(
     usersService as unknown as UsersService,

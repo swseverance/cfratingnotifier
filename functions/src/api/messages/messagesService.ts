@@ -144,4 +144,19 @@ export class MessagesService {
       throw error;
     }
   }
+
+  async getMessagesCount(): Promise<number> {
+    try {
+      const snapshot = await getFirestore()
+        .collection(MESSAGES_COLLECTION)
+        .where("state", "==", MessageState.SENT)
+        .where("type", "==", MessageType.RATING_CHANGE)
+        .count()
+        .get();
+
+      return snapshot.data().count;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

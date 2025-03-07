@@ -2,7 +2,7 @@ import { Response } from "express";
 import { Request } from "firebase-functions/https";
 import StatusCode from "status-code-enum";
 import { LoggerService } from "../../../api/logger/logger";
-import { createMockLogger } from "../../../api/logger/mockLogger";
+import { createMockLoggerService } from "../../../api/logger/mockLogger";
 import { MessagesService } from "../../../api/messages/messagesService";
 import { createMockMessagesService } from "../../../api/messages/mockMessagesService";
 import { createMockUsersService } from "../../../api/users/mockUsersService";
@@ -16,7 +16,7 @@ describe("DebugController", () => {
     const utilsService = createMockUtilsService();
     const usersService = createMockUsersService();
     const messagesService = createMockMessagesService();
-    const loggerService = createMockLogger();
+    const loggerService = createMockLoggerService();
     const controller = new DebugController(
       utilsService as unknown as UtilsService,
       usersService as unknown as UsersService,

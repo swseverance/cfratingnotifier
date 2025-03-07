@@ -186,4 +186,18 @@ export class UsersService {
       throw error;
     }
   }
+
+  async getUsersCount(): Promise<number> {
+    try {
+      const snapshot = await getFirestore()
+        .collection(USERS_COLLECTION)
+        .where("state", "==", HandleState.VALID)
+        .count()
+        .get();
+
+      return snapshot.data().count;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

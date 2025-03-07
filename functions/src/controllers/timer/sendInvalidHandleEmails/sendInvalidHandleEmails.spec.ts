@@ -1,5 +1,5 @@
 import { LoggerService } from "../../../api/logger/logger";
-import { createMockLogger } from "../../../api/logger/mockLogger";
+import { createMockLoggerService } from "../../../api/logger/mockLogger";
 import { MailgunService } from "../../../api/mailgun/mailgunService";
 import { createMockMailgunService } from "../../../api/mailgun/mockMailgunService";
 import { MessagesService } from "../../../api/messages/messagesService";
@@ -10,7 +10,7 @@ import { SendInvalidHandleEmailsController } from "./sendInvalidHandleEmails";
 
 describe("SendInvalidHandleEmailsController", () => {
   const messagesService = createMockMessagesService();
-  const loggerService = createMockLogger();
+  const loggerService = createMockLoggerService();
   const mailgunService = createMockMailgunService();
 
   const controller = new SendInvalidHandleEmailsController(

@@ -3,13 +3,13 @@ import { CodeforcesUser, User } from "../../models";
 import { ConfigService } from "../config/configService";
 import { createMockConfigService } from "../config/mockConfigService";
 import { LoggerService } from "../logger/logger";
-import { createMockLogger } from "../logger/mockLogger";
+import { createMockLoggerService } from "../logger/mockLogger";
 import { UtilsService } from "./utilsService";
 
 export const createMockUtilsService = () => {
   const service = new UtilsService(
     createMockConfigService() as ConfigService,
-    createMockLogger() as LoggerService
+    createMockLoggerService() as LoggerService
   );
 
   return {

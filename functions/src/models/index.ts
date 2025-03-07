@@ -150,3 +150,17 @@ export type FirebaseUpdateMessage = Partial<MessageBase> & {
 export type Message = FirebaseReadMessage & {
   id: string;
 };
+
+/**
+ * Analytics
+ */
+export enum AnalyticsType {
+  USERS = "users",
+  MESSAGES = "messages"
+}
+
+export type Analytics = {
+  schemaVersion: 1;
+  label: string;
+  message: string;
+};

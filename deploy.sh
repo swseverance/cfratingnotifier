@@ -15,3 +15,4 @@ firebase use "$TARGET_ENV"
 npm run test --prefix functions
 npm run build --prefix functions
 npm run deploy --prefix functions
+firebase use dev

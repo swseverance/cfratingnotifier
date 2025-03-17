@@ -155,5 +155,6 @@ describe("CodeforcesService", () => {
     http.get.mockRejectedValue(error);
 
     await expect(service.fetchRatings(["swseverance"])).rejects.toBe(error);
+    expect(loggerService.error).toHaveBeenCalled();
   });
 });

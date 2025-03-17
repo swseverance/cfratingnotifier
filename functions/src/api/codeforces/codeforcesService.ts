@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse, isAxiosError } from "axios";
+import axios, { AxiosRequestConfig, isAxiosError } from "axios";
 import {
   CodeforcesApiFailureResponse,
   CodeforcesApiSuccessResponse,
@@ -25,8 +25,13 @@ const getColor = (rank: string) => COLORS[rank as keyof typeof COLORS] ?? UNKNOW
 
 const isValidUsername = (username: string) => /^[a-zA-Z0-9._-]+$/.test(username);
 
-const getInvalidHandle = (res: AxiosResponse<CodeforcesApiFailureResponse>): string | undefined =>
-  res.data.comment.match(/handles: User with handle (\S+) not found/)?.[1];
+const getInvalidHandle = (error: unknown): string | null =>
+  isAxiosError(error) &&
+  error.response &&
+  error.response.data &&
+  typeof (error.response.data as CodeforcesApiFailureResponse).comment === "string"
+    ? error.response.data.comment.match(/handles: User with handle (\S+) not found/)?.[1]
+    : null;
 
 export class CodeforcesService {
   private static instance: CodeforcesService;
@@ -85,21 +90,19 @@ export class CodeforcesService {
         invalidHandles: []
       };
     } catch (error) {
-      if (isAxiosError(error) && error.response) {
-        const invalidHandle = getInvalidHandle(error.response);
+      const invalidHandle = getInvalidHandle(error);
 
-        if (invalidHandle) {
-          return {
-            users: [],
-            invalidHandles: [invalidHandle]
-          };
-        } else {
-          this.loggerService.error(
-            "Codeforces responded with an error message but we could not identify an invalid handle",
-            error as Error
-          );
-        }
+      if (invalidHandle) {
+        return {
+          users: [],
+          invalidHandles: [invalidHandle]
+        };
       }
+
+      this.loggerService.error(
+        "Unexpected error when fetching ratings from Codeforces",
+        error as Error
+      );
 
       throw error;
     }
